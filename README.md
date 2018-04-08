@@ -3,10 +3,23 @@
 one time link server
 ====================
 
+[![Build Status](https://travis-ci.org/GabLeRoux/gjfy.svg?branch=master)](https://travis-ci.org/GabLeRoux/gjfy)
+
 Try me
 ------
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/GabLeRoux/gjfy)
+
+TODO
+----
+
+- ENV variable auth based (remove `auth.db` and use a env var for the TOKEN instead).
+- Add the TOKEN env var to `app.json`
+- header.html
+- better error handling in url handlers
+- email notification
+- html customisation
+
 
 What does it do?
 ----------------
