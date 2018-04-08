@@ -3,6 +3,11 @@
 one time link server
 ====================
 
+Try me
+------
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/GabLeRoux/gjfy)
+
 What does it do?
 ----------------
 

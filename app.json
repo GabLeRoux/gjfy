@@ -1,0 +1,14 @@
+{
+  "name": "gjfy",
+  "description": "one time link server",
+  "website": "https://github.com/sstark/gjfy",
+  "success_url": "/",
+  "buildpacks": [
+      {
+          "url": "heroku/go"
+      }
+  ],
+  "scripts": {
+    "postdeploy": "gjfy -listen '0.0.0.0:80'"
+  }
+}
