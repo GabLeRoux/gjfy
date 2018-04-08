@@ -1,0 +1,21 @@
+{{define "title"}} - View Secret{{end}}
+{{define "content"}}
+<div id="main">
+    <p class="lead">
+        The link you invoked contains a secret (a password for example)
+        somebody wants to share with you. It will be valid only for a short
+        time and you may not be able to invoke it again. Please make sure
+        you memorise the secret or write it down in an appropriate way.
+    </p>
+    <p>The secret contained in this link is as follows:</p>
+    <input readonly autofocus type="text" class="gjfy-form-control" value="{{.Secret}}">
+</div>
+{{end}}
+{{block "footer" .}}
+<div id="footer">
+    <p>This
+        <a href="https://github.com/sstark/gjfy"><img src="gjfy-logo-small.png" alt="gjfy-logo" class="gjfy-footer-logo-small"></a> secret was created by
+        <a href="mailto:{{.AuthToken}}">{{.AuthToken}} </a>
+    </p>
+</div>
+{{end}}

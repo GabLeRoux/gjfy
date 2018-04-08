@@ -106,17 +106,13 @@ func main() {
 	}()
 
 	tIndex := template.New("index")
-	tIndex.Parse(htmlMaster)
-	tIndex.Parse(htmlIndex)
+	tIndex.ParseFiles("templates/base.html", "templates/index.html")
 	tView := template.New("view")
-	tView.Parse(htmlMaster)
-	tView.Parse(htmlView)
+	tView.ParseFiles("templates/base.html", "templates/view.html")
 	tViewErr := template.New("viewErr")
-	tViewErr.Parse(htmlMaster)
-	tViewErr.Parse(htmlViewErr)
+	tViewErr.ParseFiles("templates/base.html", "templates/viewError.html")
 	tViewInfo := template.New("viewInfo")
-	tViewInfo.Parse(htmlMaster)
-	tViewInfo.Parse(htmlViewInfo)
+	tViewInfo.ParseFiles("templates/base.html", "templates/viewInfo.html")
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
