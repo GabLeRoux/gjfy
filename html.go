@@ -1,7 +1,8 @@
 package main
 
 const (
-	cssFileName  = "custom.css"
+	cssFileName  = "templates/css/app.css"
+	jsFileName   = "templates/js/app.js"
 	logoFileName = "logo.png"
 )
 

@@ -4,15 +4,46 @@
     <h1>gjfy - one time links</h1>
     <p class="lead">
         Create links that automatically disappear once clicked. On first click
-        it will show a "secret", for instance a password that somebody wants to
-        send to someone.</br>
+        it will show a &quot;secret&quot;, for instance a password that somebody wants to
+        send to someone.
         As a user you normally should not need to visit this index page.
     </p>
+
+    <div class="application">
+        <form action="{{.UApiNew}}" method="post">
+            <label for="auth_token">
+                <span>auth_token</span>
+                <input v-model="auth_token" type="text">
+            </label>
+            <br>
+            <label for="secret">
+                <span>secret</span>
+                <input v-model="secret" type="text">
+            </label>
+            <br>
+            <label for="max_clicks">
+                <span>max_clicks</span>
+                <input v-model="max_clicks" type="number" value="1">
+            </label>
+            <br>
+            <input type="submit" @click.prevent="sendNewSecret">
+        </form>
+
+        <h2>results</h2>
+        <pre><code>
+${postResults}
+        </code></pre>
+    </div>
+
     <ul>
-        <li><a href="https://github.com/sstark/gjfy">
-            <img src="gjfy-logo-small.png" alt="gjfy-logo" class="gjfy-footer-logo-small"> Homepage</a>
-        <li><a href="gjfy-post">Download command line client</a>
+        <li>
+            <a href="https://github.com/sstark/gjfy">
+                <img src="gjfy-logo-small.png" alt="gjfy-logo" class="gjfy-footer-logo-small"> Homepage
+            </a>
+        </li>
+        <li>
+            <a href="gjfy-post">Download command line client</a>
+        </li>
     </ul>
-    </p>
 </div>
 {{end}}

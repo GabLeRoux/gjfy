@@ -1,20 +1,30 @@
 html {
-	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-	color: #333333;
-	-webkit-text-size-adjust:100%;
-	-ms-text-size-adjust:100%;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #333333;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
 }
-body{
-	margin:0
+
+body {
+    margin: 0
+}
+
+[v-cloak] {
+    display: none;
+}
+
+div.application {
+    text-align: left;
 }
 
 a, a:active, a:visited {
-	color: #999;
-	text-decoration: none;
+    color: #999;
+    text-decoration: none;
 }
+
 a:hover {
-	color: #549AA5;
-	text-decoration: none;
+    color: #549AA5;
+    text-decoration: none;
 }
 
 .gjfy-container {
@@ -27,17 +37,17 @@ a:hover {
 }
 
 .gjfy-logo {
-	max-width: 200px;
-	padding: 80px 0px 20px 0px;
+    max-width: 200px;
+    padding: 80px 0 20px 0;
 }
 
 .gjfy-footer-logo-small {
-	max-height: 24px;
-	vertical-align: middle;
+    max-height: 24px;
+    vertical-align: middle;
 }
 
 .text-center {
-	text-align: center;
+    text-align: center;
 }
 
 .lead {
@@ -56,7 +66,7 @@ div#main ul {
 }
 
 .gjfy-form-control {
-	font-family: inherit;
+    font-family: inherit;
     display: block;
     width: 100%;
     height: 34px;
@@ -65,9 +75,7 @@ div#main ul {
     color: #999 !important;
     text-align: center;
     line-height: 1.42857143;
-    color: #555;
-    background-color: #fff;
-    background-image: none;
+    background: #fff none;
     border: 1px solid #ccc;
     border-radius: 10px;
     -webkit-transition: border-color ease-in-out .15s;

@@ -1,1 +1,6 @@
 gjfy
+# idea IDE
+.idea/*
+!.idea/codeStyles/
+!.idea/runConfigurations/
+!.idea/inspectionProfiles/

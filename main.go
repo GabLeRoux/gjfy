@@ -28,7 +28,8 @@ const (
 	uClientShell    = "/gjfy-post"
 	uFav            = "/favicon.ico"
 	uLogoSmall      = "/gjfy-logo-small.png"
-	uCss            = "/custom.css"
+	uCss            = "/templates/css/app.css"
+	uJs             = "/templates/js/app.js"
 	uLogo           = "/logo.png"
 	maxData         = 1048576 // 1MB
 	defaultValidity = 7       // days
@@ -41,6 +42,7 @@ const (
 var (
 	auth      TokenDB
 	css       []byte
+	js        []byte
 	logo      []byte
 	updated   = time.Time{}
 	fListen   string
@@ -70,6 +72,7 @@ func updateFiles() {
 		log.Println("auth db could not be loaded, please fix and reload")
 	}
 	css = tryReadFile(cssFileName)
+	js = tryReadFile(jsFileName)
 	logo = tryReadFile(logoFileName)
 	updated = time.Now()
 }
@@ -81,6 +84,10 @@ func getURLBase() string {
 	sl := strings.Split(fListen, ":")
 	port := sl[len(sl)-1]
 	return fmt.Sprintf("%s%s:%s", scheme, defaultHostname, port)
+}
+
+type Page struct {
+	UApiNew string
 }
 
 func main() {
@@ -116,7 +123,8 @@ func main() {
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusOK)
-		tIndex.ExecuteTemplate(w, "master", nil)
+		var p = &Page{UApiNew: uApiNew}
+		tIndex.ExecuteTemplate(w, "base", p)
 	})
 
 	http.HandleFunc(uApiGet, func(w http.ResponseWriter, r *http.Request) {
@@ -145,7 +153,7 @@ func main() {
 		}
 		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 		if err := json.Unmarshal(body, &entry); err != nil {
-			w.WriteHeader(422) // unprocessable entity
+			w.WriteHeader(http.StatusUnprocessableEntity)
 			if err := json.NewEncoder(w).Encode(err); err != nil {
 				panic(err)
 			}
@@ -201,6 +209,10 @@ func main() {
 
 	http.HandleFunc(uCss, func(w http.ResponseWriter, r *http.Request) {
 		http.ServeContent(w, r, cssFileName, updated, bytes.NewReader(css))
+	})
+
+	http.HandleFunc(uJs, func(w http.ResponseWriter, r *http.Request) {
+		http.ServeContent(w, r, jsFileName, updated, bytes.NewReader(js))
 	})
 
 	http.HandleFunc(uLogo, func(w http.ResponseWriter, r *http.Request) {
